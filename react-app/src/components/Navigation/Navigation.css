@@ -5,3 +5,16 @@
 .hidden {
   display: none;
 }
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 1240px;
+  list-style-type: none;
+  border-bottom: 1px solid rgb(172, 168, 168);
+  /* background-color: rgb(69, 69, 69); */
+  margin: auto;
+}

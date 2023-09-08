@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getRecipesThunk } from "../../store/recipes"
 import { useEffect } from "react"
+import MyRecipes from "./MyRecipes"
+import OtherRecipes from "./OtherRecipes"
 
 export default function MainPage() {
     const dispatch = useDispatch()
@@ -14,12 +16,8 @@ export default function MainPage() {
     return (
         <>
             <div>Hello! from MainPage</div>
-            <div className="category-container">
-                <div>breakfast</div>
-                <div>lunch</div>
-                <div>dinner</div>
-                <div>dessert</div>
-            </div>
+            <MyRecipes />
+            <OtherRecipes />
         </>
     )
 }

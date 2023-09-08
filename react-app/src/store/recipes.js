@@ -35,6 +35,16 @@ export const getRecipeThunk = (recipeId) => async dispatch => {
     }
 }
 
+export const getRandomRecipeThunk = () => async dispatch => {
+    const res = await fetch(`/api/recipes/random`)
+
+    if (res.ok) {
+        const recipe = await res.json()
+        dispatch(getRecipeAction(recipe))
+        return recipe
+    }
+}
+
 const initialState = { allRecipes: {}, singleRecipe: {} }
 
 const recipeReducer = (state = initialState, action) => {

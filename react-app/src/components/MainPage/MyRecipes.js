@@ -1,13 +1,13 @@
 export default function MyRecipes() {
     return (
         <>
-            <div>hello from myrecipes</div>
-            <div className="category-container">
+            <h3>hello from my recipes</h3>
+            {/* <div className="category-container">
                 <div>breakfast</div>
                 <div>lunch</div>
                 <div>dinner</div>
                 <div>dessert</div>
-            </div>
+            </div> */}
         </>
     )
 }

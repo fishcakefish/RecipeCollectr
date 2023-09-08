@@ -14,7 +14,7 @@ export default function OtherRecipes() {
 
     return (
         <>
-            <div>hello from other recipes</div>
+            <h3>hello from other recipes</h3>
         </>
     )
 }

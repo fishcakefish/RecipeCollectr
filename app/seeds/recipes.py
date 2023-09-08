@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 def seed_recipes():
     recipe1 = Recipe(
-        category="desert",
+        category="dessert",
         title="Strawberry Cheesecake",
         recipe_link="random.com",
         description="Easy to make low calorie cheesecake!",

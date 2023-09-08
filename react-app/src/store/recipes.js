@@ -1,5 +1,8 @@
 const GET_RECIPES = "recipes/getRecipes"
 const GET_RECIPE = "recipes/getRecipe"
+const POST_RECIPE = "recipes/postRecipe"
+const EDIT_RECIPE = "recipes/editRecipe"
+const DELETE_RECIPE = "recipes/deleteRecipe"
 
 const getRecipesAction = (recipes) => {
     return {
@@ -15,6 +18,26 @@ const getRecipeAction = (recipe) => {
     }
 }
 
+const postRecipeAction = (recipe) => {
+    return {
+        type: POST_RECIPE,
+        recipe
+    }
+}
+
+const editRecipeAction = (recipe) => {
+    return {
+        type: EDIT_RECIPE,
+        recipe
+    }
+}
+
+const deleteRecipeAction = (recipeId) => {
+    return {
+        type: DELETE_RECIPE,
+        recipeId
+    }
+}
 export const getRecipesThunk = () => async dispatch => {
     const res = await fetch(`/api/recipes`)
 
@@ -45,6 +68,45 @@ export const getRandomRecipeThunk = () => async dispatch => {
     }
 }
 
+export const postRecipeThunk = (recipe, user) => async dispatch => {
+    const res = await fetch(`/api/recipes/post`, {
+        method: 'POST',
+        body: recipe
+    })
+
+    if (res.ok) {
+        if (!user) throw new Error('Please log in to create a song')
+        const postedRecipe = await res.json()
+        dispatch(postRecipeAction(postedRecipe))
+        return postedRecipe
+    }
+}
+
+export const editRecipeThunk = (recipe, user) => async dispatch => {
+    const res = await fetch(`/api/recipes/edit/${recipe.id}`, {
+        method: 'EDIT',
+        body: recipe
+    })
+
+    if (res.ok) {
+        const recipe = await res.json()
+        dispatch(editRecipeAction(recipe))
+        return recipe
+    }
+}
+
+export const deleteRecipeThunk = (recipeId) => async dispatch => {
+    const res = await fetch(`/api/recipes/${recipeId}`, {
+        method: 'DELETE',
+    })
+
+    if (res.ok) {
+        await res.json()
+        dispatch(deleteRecipeAction(recipeId))
+        return `deleted recipe with id: ${recipeId}`
+    }
+}
+
 const initialState = { allRecipes: {}, singleRecipe: {} }
 
 const recipeReducer = (state = initialState, action) => {
@@ -58,6 +120,22 @@ const recipeReducer = (state = initialState, action) => {
         case GET_RECIPE: {
             newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }
             newState.singleRecipe = action.recipe
+            return newState
+        }
+        case POST_RECIPE: {
+            newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }
+            newState.allRecipes[action.recipe.id] = action.recipe
+            newState.singleRecipe = action.recipe
+            return newState
+        }
+        case EDIT_RECIPE: {
+            newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }
+            newState.allRecipes[action.recipe.id] = action.recipe
+            newState.singleRecipe = action.recipe
+        }
+        case DELETE_RECIPE: {
+            newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }
+            delete newState.allRecipes[action.recipeId]
             return newState
         }
         default:

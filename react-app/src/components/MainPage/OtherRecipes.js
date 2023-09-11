@@ -4,7 +4,7 @@ import { getRandomRecipeThunk } from "../../store/recipes"
 
 export default function OtherRecipes() {
     const dispatch = useDispatch()
-    const recipe = useSelector(state => Object.values(state.recipes.singleRecipe))
+    const recipe = useSelector(state => state.recipes.singleRecipe)
 
     useEffect(() => {
         dispatch(getRandomRecipeThunk())

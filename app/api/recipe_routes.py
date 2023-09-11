@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Recipe, db
+from app.models import Recipe, User, db
 from random import randint
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -39,3 +39,11 @@ def post_recipe():
 @login_required
 def edit_recipe(id):
     pass
+
+@recipe_routes.route('/user')
+@login_required
+def get_user_recipes():
+    curr_user = User.query.get(current_user.id)
+    get_recipes = Recipe.query.filter_by(user_id=curr_user.id).all()
+    response = [recipe.to_dict() for recipe in get_recipes]
+    return response

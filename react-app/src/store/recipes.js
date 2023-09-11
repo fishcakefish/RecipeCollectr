@@ -58,6 +58,16 @@ export const getRecipeThunk = (recipeId) => async dispatch => {
     }
 }
 
+export const getUserRecipesThunk = () => async dispatch => {
+    const res = await fetch(`/api/recipes/user`)
+
+    if (res.ok) {
+        const recipes = await res.json()
+        dispatch(getRecipesAction(recipes))
+        return recipes
+    }
+}
+
 export const getRandomRecipeThunk = () => async dispatch => {
     const res = await fetch(`/api/recipes/random`)
 

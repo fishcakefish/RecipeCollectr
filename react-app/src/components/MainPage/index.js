@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getRecipesThunk } from "../../store/recipes"
+import { getUserRecipesThunk } from "../../store/recipes"
 import { useEffect, useState } from "react"
 import MyRecipes from "./MyRecipes"
 import OtherRecipes from "./OtherRecipes"
+import "./MainPage.css"
 
 export default function MainPage() {
     const dispatch = useDispatch()
@@ -20,16 +21,19 @@ export default function MainPage() {
     }
 
     useEffect(() => {
-        dispatch(getRecipesThunk())
+        dispatch(getUserRecipesThunk())
     }, [dispatch])
 
-    console.log(recipes)
     return (
         <>
-            <div>Hello! from MainPage</div>
-            <div>{ yourRecipes ? <MyRecipes /> : <OtherRecipes /> }</div>
-            <button onClick={handleMyClick}>My Recipes</button>
-            <button onClick={handleOtherClick}>Other Recipes</button>
+            <div className="main-page-container">
+                <div>Hello! from MainPage</div>
+                <div>{ yourRecipes ? <MyRecipes /> : <OtherRecipes /> }</div>
+                <div className="your-recipes-container">
+                    <button onClick={handleMyClick}>My Recipes</button>
+                    <button onClick={handleOtherClick}>Other Recipes</button>
+                </div>
+            </div>
         </>
     )
 }

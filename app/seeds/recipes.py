@@ -30,8 +30,15 @@ def seed_recipes():
         description="Juicy tender birrita tacos, 18 hour prep time",
         user_id=1
     )
+    recipe5 = Recipe(
+        category="lunch",
+        title="Bagel Bites",
+        recipe_link="random5.com",
+        description="Bite Sized Pizzas on Tiny Bagels",
+        user_id=2
+    )
 
-    all_recipes = [recipe1, recipe2, recipe3, recipe4]
+    all_recipes = [recipe1, recipe2, recipe3, recipe4, recipe5]
     add_recipes = [db.session.add(recipe) for recipe in all_recipes]
     db.session.commit()
     return all_recipes

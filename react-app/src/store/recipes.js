@@ -79,7 +79,7 @@ export const getRandomRecipeThunk = () => async dispatch => {
 }
 
 export const postRecipeThunk = (recipe, user) => async dispatch => {
-    const res = await fetch(`/api/recipes/post`, {
+    const res = await fetch(`/api/recipes/create`, {
         method: 'POST',
         body: recipe
     })
@@ -88,6 +88,7 @@ export const postRecipeThunk = (recipe, user) => async dispatch => {
         if (!user) throw new Error('Please log in to create a song')
         const postedRecipe = await res.json()
         dispatch(postRecipeAction(postedRecipe))
+        console.log('@@THROUGH DISPATCH')
         return postedRecipe
     }
 }

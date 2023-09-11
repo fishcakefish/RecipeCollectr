@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import { Link } from "react-router-dom"
+import { postRecipeThunk } from "../../store/recipes"
 
 export default function RecipeCreate() {
     const dispatch = useDispatch()
@@ -28,15 +29,15 @@ export default function RecipeCreate() {
         const formData = new FormData()
         formData.append("category", category)
         formData.append("title", title)
-        formData.append("link", link)
+        formData.append("recipe_link", link)
         formData.append("description", description)
 
-        // try {
-        //     const newRecipe = await dispatch(createRecipeThunk(formData, user))
-        //     history.push(`/recipes/${newRecipe?.newRecipe.id}`)
-        // } catch (error) {
-        //     console.error('Error creating recipe:', error)
-        // }
+        try {
+            const newRecipe = await dispatch(postRecipeThunk(formData, user))
+            // history.push(`/recipes/${newRecipe?.newRecipe.id}`)
+        } catch (error) {
+            console.error('Error creating recipe:', error)
+        }
     }
 
     return (
@@ -48,7 +49,9 @@ export default function RecipeCreate() {
                         <section id='create-form-data'>
                             <label className="create-form-elements">
                                 Category:
-                                <select id='category-select'>
+                                <select
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}>
                                     <option value="">--Please choose a category</option>
                                     <option value="breakfast">Breakfast</option>
                                     <option value="lunch">Lunch</option>

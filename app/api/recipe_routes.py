@@ -53,12 +53,17 @@ def post_recipe():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print("@@@@IN FORM VALIDATE")
+        curr_user = User.query.get(current_user.id)
         new_recipe = Recipe(
             category = form.data["category"],
             title = form.data["title"],
             recipe_link = form.data['recipe_link'],
-            description = form.data['description']
+            description = form.data['description'],
+            user_id=curr_user.id
         )
+        print("@@@PAST NEW_RECIPE")
+        print(new_recipe)
 
         db.session.add(new_recipe)
         db.session.commit()

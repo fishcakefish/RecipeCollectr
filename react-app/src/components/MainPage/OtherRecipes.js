@@ -15,6 +15,9 @@ export default function OtherRecipes() {
     return (
         <>
             <h3>hello from other recipes</h3>
+            <div className="otherrecipe-container">
+                <h2>Other recipe container</h2>
+            </div>
         </>
     )
 }

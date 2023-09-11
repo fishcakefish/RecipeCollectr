@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getUserRecipesThunk } from "../../store/recipes"
+import { NavLink } from "react-router-dom"
 
 export default function MyRecipes() {
     const dispatch = useDispatch()
@@ -15,6 +16,7 @@ export default function MyRecipes() {
     return (
         <>
             <h3>hello from my recipes</h3>
+            <h2><NavLink exact to="/create">Create New Recipe!</NavLink></h2>
             <div className="category-container">
                 <button>breakfast</button>
                 <button>lunch</button>

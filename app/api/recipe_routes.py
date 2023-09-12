@@ -14,6 +14,7 @@ def get_all_recipes():
 
 @recipe_routes.route('/<int:id>')
 def get_one_recipe(id):
+    print('@@@@@@@@@@@@@@@@yo')
     get_recipe = Recipe.query.get(id)
     return get_recipe.to_dict()
 
@@ -53,7 +54,6 @@ def post_recipe():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print("@@@@IN FORM VALIDATE")
         curr_user = User.query.get(current_user.id)
         new_recipe = Recipe(
             category = form.data["category"],
@@ -62,8 +62,6 @@ def post_recipe():
             description = form.data['description'],
             user_id=curr_user.id
         )
-        print("@@@PAST NEW_RECIPE")
-        print(new_recipe)
 
         db.session.add(new_recipe)
         db.session.commit()

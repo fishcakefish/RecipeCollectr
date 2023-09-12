@@ -5,6 +5,7 @@ import { getUserRecipesThunk } from "../../store/recipes"
 import RecipeDelete from "../RecipeDelete"
 import OpenModalButton from "../OpenModalButton"
 import RecipeEdit from "../RecipeEdit"
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
 
 export default function RecipeCategory() {
     const dispatch = useDispatch()
@@ -21,7 +22,7 @@ export default function RecipeCategory() {
             <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
             {categoryRecipes.map(recipe => (
                 <>
-                    <h3 key={recipe.id || recipe.title}>{recipe.title}</h3>
+                    <NavLink exact to={`/${recipe.id}`}><h3 key={recipe.id || recipe.title}>{recipe.title}</h3></NavLink>
                     <div>
                         <OpenModalButton
                             buttonText={"Edit"}

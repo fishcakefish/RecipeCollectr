@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import MainPage from "./components/MainPage";
 import RecipeCreate from "./components/RecipeCreate";
 import RecipeCategory from "./components/RecipeCategory";
+import RecipeOne from "./components/RecipeOne";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/myrecipes/:category">
             <RecipeCategory />
+          </Route>
+          <Route path="/:recipeId">
+            <RecipeOne />
           </Route>
         </Switch>
       )}

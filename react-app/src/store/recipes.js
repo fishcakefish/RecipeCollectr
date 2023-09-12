@@ -49,10 +49,12 @@ export const getRecipesThunk = () => async dispatch => {
 }
 
 export const getRecipeThunk = (recipeId) => async dispatch => {
+    console.log('test')
     const res = await fetch(`/api/recipes/${recipeId}`)
 
     if (res.ok) {
         const recipe = await res.json()
+        console.log(recipe)
         dispatch(getRecipeAction(recipe))
         return recipe
     }
@@ -95,7 +97,7 @@ export const postRecipeThunk = (recipe, user) => async dispatch => {
 
 export const editRecipeThunk = (recipe, recipeId) => async dispatch => {
     const res = await fetch(`/api/recipes/${recipeId}`, {
-        method: 'EDIT',
+        method: 'PUT',
         body: recipe
     })
 

@@ -93,8 +93,8 @@ export const postRecipeThunk = (recipe, user) => async dispatch => {
     }
 }
 
-export const editRecipeThunk = (recipe, user) => async dispatch => {
-    const res = await fetch(`/api/recipes/edit/${recipe.id}`, {
+export const editRecipeThunk = (recipe, recipeId) => async dispatch => {
+    const res = await fetch(`/api/recipes/${recipeId}`, {
         method: 'EDIT',
         body: recipe
     })

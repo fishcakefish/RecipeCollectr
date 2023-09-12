@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MainPage from "./components/MainPage";
 import RecipeCreate from "./components/RecipeCreate";
+import RecipeCategory from "./components/RecipeCategory";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/create">
             <RecipeCreate />
+          </Route>
+          <Route path="/myrecipes/:category">
+            <RecipeCategory />
           </Route>
         </Switch>
       )}

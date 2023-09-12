@@ -24,7 +24,7 @@ def delete_recipe(id):
     db.session.commit()
     return { "Success": "successfully deleted" }
 
-@recipe_routes.route('<int:id>', methods=["PUT"])
+@recipe_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def edit_recipe(id):
     form = RecipeEditForm()

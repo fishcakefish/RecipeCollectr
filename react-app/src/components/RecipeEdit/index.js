@@ -1,17 +1,20 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { postRecipeThunk } from "../../store/recipes"
+import { editRecipeThunk } from "../../store/recipes"
+import { useModal } from "../../context/Modal"
 
-export default function RecipeCreate() {
+export default function RecipeEdit({ recipeId }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    const [category, setCategory] = useState('')
-    const [title, setTitle] = useState('')
-    const [link, setLink] = useState('')
-    const [description, setDescription] = useState('')
+    const chosenRecipe = useSelector(state => Object.values(state.recipes.allRecipes)).filter(recipe => recipe.id === recipeId)[0]
+    const [category, setCategory] = useState(chosenRecipe.category)
+    const [title, setTitle] = useState(chosenRecipe.title)
+    const [link, setLink] = useState(chosenRecipe.recipe_link)
+    const [description, setDescription] = useState(chosenRecipe.description)
     const [errros, setErrors] = useState({})
+    const { closeModal } = useModal()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -32,7 +35,7 @@ export default function RecipeCreate() {
         formData.append("description", description)
 
         try {
-            const newRecipe = await dispatch(postRecipeThunk(formData, user))
+            const newRecipe = await dispatch(editRecipeThunk(formData, recipeId))
             history.push(`/recipes/${newRecipe?.newRecipe.category}`)
         } catch (error) {
             console.error('Error creating recipe:', error)
@@ -51,7 +54,6 @@ export default function RecipeCreate() {
                                 <select
                                     value={category}
                                     onChange={(e) => setCategory(e.target.value)}>
-                                    <option value="">--Please choose a category</option>
                                     <option value="breakfast">Breakfast</option>
                                     <option value="lunch">Lunch</option>
                                     <option value="dinner">Dinner</option>
@@ -93,7 +95,7 @@ export default function RecipeCreate() {
                             </label>
                             {errros.description && <p className="create-validators">{errros.description}</p>}
                         </section>
-                        <button type="submit" className="submit-button">Create Recipe</button>
+                        <button type="submit" className="submit-button">Edit Recipe</button>
                     </div>
                 </form>
             </div>

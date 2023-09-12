@@ -3,7 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
-import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink } from "react-router-dom";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -11,7 +11,6 @@ function LoginFormPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
 

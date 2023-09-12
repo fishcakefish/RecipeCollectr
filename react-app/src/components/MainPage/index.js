@@ -2,12 +2,9 @@ import { useState } from "react"
 import MyRecipes from "./MyRecipes"
 import OtherRecipes from "./OtherRecipes"
 import "./MainPage.css"
-import { useSelector } from "react-redux"
-import LoginFormPage from "../LoginFormPage"
 
 export default function MainPage() {
     const [yourRecipes, setYourRecipes] = useState(true)
-    const user = useSelector(state => state.session.user)
 
     const handleMyClick = async(e) => {
         e.preventDefault()
@@ -17,12 +14,6 @@ export default function MainPage() {
     const handleOtherClick = async(e) => {
         e.preventDefault()
         setYourRecipes(false)
-    }
-
-    if (!user) {
-        return (
-            <LoginFormPage />
-        )
     }
 
     return (

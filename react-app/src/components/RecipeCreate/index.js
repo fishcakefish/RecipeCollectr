@@ -33,7 +33,7 @@ export default function RecipeCreate() {
 
         try {
             const newRecipe = await dispatch(postRecipeThunk(formData, user))
-            history.push(`/recipes/${newRecipe?.newRecipe.category}`)
+            history.push(`/${newRecipe?.editedRecipe.id}`)
         } catch (error) {
             console.error('Error creating recipe:', error)
         }

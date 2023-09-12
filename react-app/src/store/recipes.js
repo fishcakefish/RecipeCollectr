@@ -145,6 +145,7 @@ const recipeReducer = (state = initialState, action) => {
             newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }
             newState.allRecipes[action.recipe.id] = action.recipe
             newState.singleRecipe = action.recipe
+            return newState
         }
         case DELETE_RECIPE: {
             newState = { ...state, allRecipes: { ...state.allRecipes }, singleRecipe: {} }

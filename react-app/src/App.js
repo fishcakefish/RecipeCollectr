@@ -9,6 +9,7 @@ import MainPage from "./components/MainPage";
 import RecipeCreate from "./components/RecipeCreate";
 import RecipeCategory from "./components/RecipeCategory";
 import RecipeOne from "./components/RecipeOne";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,24 +23,24 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
+          <ProtectedRoute exact path="/">
             <MainPage />
-          </Route>
+          </ProtectedRoute>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/create">
+          <ProtectedRoute path="/create">
             <RecipeCreate />
-          </Route>
-          <Route path="/myrecipes/:category">
+          </ProtectedRoute>
+          <ProtectedRoute path="/myrecipes/:category">
             <RecipeCategory />
-          </Route>
-          <Route path="/:recipeId">
+          </ProtectedRoute>
+          <ProtectedRoute path="/:recipeId">
             <RecipeOne />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       )}
     </>

@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function LoginFormPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -20,6 +22,11 @@ function LoginFormPage() {
       setErrors(data);
     }
   };
+
+  const loginDemo = (e) => {
+    e.preventDefault()
+    dispatch(login('demo@aa.io', 'password'))
+  }
 
   return (
     <>
@@ -49,7 +56,9 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button id="login-demo" className='button-orange' onClick={loginDemo}>Demo User</button>
       </form>
+      <NavLink exact to="/signup"><h1>Or Sign Up</h1></NavLink>
     </>
   );
 }

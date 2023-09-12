@@ -7,7 +7,6 @@ import { useModal } from "../../context/Modal"
 export default function RecipeEdit({ recipeId }) {
     const dispatch = useDispatch()
     const history = useHistory()
-    const user = useSelector(state => state.session.user)
     const chosenRecipe = useSelector(state => Object.values(state.recipes.allRecipes)).filter(recipe => recipe.id === recipeId)[0]
     const [category, setCategory] = useState(chosenRecipe.category)
     const [title, setTitle] = useState(chosenRecipe.title)

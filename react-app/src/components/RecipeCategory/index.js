@@ -20,6 +20,7 @@ export default function RecipeCategory() {
     if (categoryRecipes.length < 1) {
         return (
             <>
+                <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
                 <h2><NavLink exact to="/create">Create New Recipe!</NavLink></h2>
                 <img src="/NoRecipes.PNG" alt="No Recipes?" />
             </>

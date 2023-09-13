@@ -19,5 +19,13 @@ class Note(db.Model, UserMixin):
         return {
             "id": self.id,
             "entry": self.entry,
+            "user": self.user.to_dict(),
             "recipe": self.recipe.to_dict()
+        }
+
+    def to_dict_no_recipe(self):
+        return {
+            "id": self.id,
+            "entry": self.entry,
+            "user": self.user.to_dict()
         }

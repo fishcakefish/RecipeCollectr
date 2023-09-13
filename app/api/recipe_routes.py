@@ -19,6 +19,7 @@ def get_one_recipe(id):
     return get_recipe.to_dict()
 
 @recipe_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_recipe(id):
     get_recipe = Recipe.query.get(id)
     db.session.delete(get_recipe)

@@ -45,7 +45,7 @@ export default function RecipeEdit({ recipeId }) {
     return (
         <div className="index">
             <div className="recipe-create-div">
-                <h1>Create a Recipe</h1>
+                <h1>Edit Recipe</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>

@@ -17,6 +17,15 @@ export default function RecipeCategory() {
         dispatch(getUserRecipesThunk())
     }, [dispatch])
 
+    if (categoryRecipes.length < 1) {
+        return (
+            <>
+                <h2><NavLink exact to="/create">Create New Recipe!</NavLink></h2>
+                <img src="/NoRecipes.PNG" alt="No Recipes?" />
+            </>
+        )
+    }
+
     return (
         <div>
             <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>

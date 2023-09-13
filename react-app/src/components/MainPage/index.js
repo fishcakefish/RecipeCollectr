@@ -20,7 +20,6 @@ export default function MainPage() {
         <>
             <div className="main-page-container">
                 <div>Hello! from MainPage</div>
-                <div>.</div>
                 <div>{ yourRecipes ? <MyRecipes /> : <OtherRecipes /> }</div>
                 <div className="your-recipes-container">
                     <button onClick={handleMyClick}>My Recipes</button>

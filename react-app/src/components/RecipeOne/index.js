@@ -39,7 +39,7 @@ export default function RecipeOne() {
                 buttonText={"Add Note"}
                 modalComponent={<NoteCreate recipeId={recipe.id}/>}
             />
-            <h2>Your Notes:</h2>
+            <h2>Your Notes: (bug: refresh if editing or adding notes)</h2>
             {notes.map(note => (
                 <div key={note.id}>
                     <h3>{note.entry}</h3>

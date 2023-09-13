@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams, NavLink } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getRecipeThunk } from "../../store/recipes"
 import { getRecipeNotesThunk } from "../../store/notes"
 import NoteEdit from "../NoteEdit"
 import OpenModalButton from "../OpenModalButton"
+import NoteDelete from "../NoteDelete"
+import NoteCreate from "../NoteCreate"
 
 export default function RecipeOne() {
     const dispatch = useDispatch()
@@ -21,7 +23,7 @@ export default function RecipeOne() {
         }
 
         fetchRecipe()
-    }, [dispatch, recipeId])
+    }, [dispatch])
 
     if (isLoading) {
         return (
@@ -33,18 +35,25 @@ export default function RecipeOne() {
         <>
             <h1>Hello from RecipeOne component</h1>
             <h2>{recipe.title}</h2>
-            <button>Add Note</button>
+            <OpenModalButton
+                buttonText={"Add Note"}
+                modalComponent={<NoteCreate recipeId={recipe.id}/>}
+            />
             <h2>Your Notes:</h2>
             {notes.map(note => (
-                <>
+                <div key={note.id}>
                     <h3>{note.entry}</h3>
                     <div>
                         <OpenModalButton
                             buttonText={"Edit"}
-                            modalComponent={<NoteEdit noteId={note.id}/>}
+                            modalComponent={<NoteEdit note={note} noteId={note.id} recipeId={recipeId}/>}
+                        />
+                        <OpenModalButton
+                            buttonText={"Delete"}
+                            modalComponent={<NoteDelete noteId={note.id}/>}
                         />
                     </div>
-                </>
+                </div>
             ))}
         </>
     )

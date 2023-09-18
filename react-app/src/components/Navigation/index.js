@@ -11,6 +11,8 @@ function Navigation({ isLoaded }){
 		<ul className='nav-bar'>
 			<li>
 				<NavLink exact to="/">Home</NavLink>
+				{/* <NavLink exact to="/login">Login</NavLink>
+				<NavLink exact to="/signup">Signup</NavLink> */}
 			</li>
 			{isLoaded && (
 				<li>

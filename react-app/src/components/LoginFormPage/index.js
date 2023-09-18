@@ -29,35 +29,44 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <div className="signup-title-container">
+        <h1>Login</h1>
+        <NavLink exact to="/signup"><h1><a>Or Sign Up</a></h1></NavLink>
+      </div>
+      <div className="login-container">
+        <form onSubmit={handleSubmit}>
+          <h3>Login</h3>
+          <div className="login-input-container">
+            <label>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              Email Address
+            </label>
+            <label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              Password
+            </label>
+          </div>
+          <div className="login-button-container">
+            <button type="submit">Log In</button>
+            <button id="login-demo" className='button-orange' onClick={loginDemo}>Demo User</button>
+          </div>
+        </form>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
         </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <button id="login-demo" className='button-orange' onClick={loginDemo}>Demo User</button>
-      </form>
-      <NavLink exact to="/signup"><h1>Or Sign Up</h1></NavLink>
+      </div>
     </>
   );
 }

@@ -1,0 +1,76 @@
+.signup-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-container h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-container form {
+    width: 500px;
+    height: 350px;
+    background-color: #f8f6f0;
+    box-shadow: -5px 1px 8px rgba(0, 0, 0, 0.1),
+                 5px 1px 8px rgba(0, 0, 0, 0.1),
+                 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.signup-container h2 a:visited {
+    color: black;
+}
+
+.signup-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.signup-input-container input {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 25px;
+    border-color: lightgray;
+}
+
+.signup-input-container label + label {
+    margin-top: 10px;
+}
+
+.signup-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.signup-button-container button {
+    background-color: #df8853;
+    color: white;
+    font-size: 18px;
+    width: 100px;
+    height: 35px;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 3px;
+}
+
+.signup-button-container button:hover {
+    background-color: darkorange;
+    cursor: pointer;
+}

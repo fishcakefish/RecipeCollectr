@@ -1,0 +1,75 @@
+.login-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container form {
+    width: 500px;
+    height: 250px;
+    background-color: #f8f6f0;
+    box-shadow: -5px 1px 8px rgba(0, 0, 0, 0.1),
+                 5px 1px 8px rgba(0, 0, 0, 0.1),
+                 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.login-container h2 a:visited {
+    color: black;
+}
+
+.login-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.login-input-container input {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 25px;
+    border-color: lightgray;
+}
+
+.login-input-container label + label {
+    margin-top: 10px;
+}
+
+.login-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+}
+
+.login-button-container button {
+    background-color: #df8853;
+    color: white;
+    font-size: 18px;
+    width: 100px;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 3px;
+}
+
+.login-button-container button:hover {
+    background-color: darkorange;
+    cursor: pointer;
+}

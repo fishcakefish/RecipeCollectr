@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { getUserRecipesThunk } from "../../store/recipes"
@@ -12,10 +12,15 @@ export default function RecipeCategory() {
     const { category } = useParams()
     const recipes = useSelector(state => Object.values(state.recipes.allRecipes))
     const categoryRecipes = recipes.filter(recipe => recipe.category === category)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        dispatch(getUserRecipesThunk())
+        dispatch(getUserRecipesThunk()).finally(() => {
+            setIsLoading(false)
+        })
     }, [dispatch])
+
+    if (isLoading) return <h1>{">.<"}</h1>
 
     if (categoryRecipes.length < 1) {
         return (

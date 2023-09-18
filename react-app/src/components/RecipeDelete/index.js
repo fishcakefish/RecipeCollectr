@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { deleteRecipeThunk } from "../../store/recipes"
+import './RecipeDelete.css'
 
 export default function RecipeDelete({ recipeId }) {
     const dispatch = useDispatch()

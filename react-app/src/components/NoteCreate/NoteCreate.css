@@ -1,0 +1,13 @@
+/* .recipe-create-div {
+    display: flex;
+    flex-direction: row;
+} */
+.create-note-elements {
+    display: flex;
+    justify-content: center;
+}
+
+.create-note-elements textarea {
+    width: 400px;
+    height: 100px;
+}

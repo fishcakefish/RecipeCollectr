@@ -1,0 +1,49 @@
+.delete-modal {
+    background-color: #f8f6f0;  /* A neutral off-white background. Modify as needed. */
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-modal h2 {
+    margin-bottom: 15px;
+}
+
+.delete-modal p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.yes-button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    font-weight: bolder;
+    font-size: large;
+}
+.no-button {
+    background-color: #df8853;  /* Orange background. */
+    color: black;               /* White text. */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;                /* Spacing between buttons. */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: large;
+}
+
+.yes-button:hover {
+    background-color: red;
+}
+.no-button:hover {
+    background-color: darkorange;  /* A darker orange for hover effect. */
+}

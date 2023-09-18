@@ -45,10 +45,10 @@ export default function RecipeEdit({ recipeId }) {
     return (
         <div className="index">
             <div className="recipe-create-div">
-                <h1>Edit Recipe</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>
+                            <h1>Edit Recipe</h1>
                             <label className="create-form-elements">
                                 Category:
                                 <select
@@ -94,8 +94,10 @@ export default function RecipeEdit({ recipeId }) {
                                 />
                             </label>
                             {errros.description && <p className="create-validators">{errros.description}</p>}
+                            <div className="submit-button-container">
+                                <button type="submit" className="submit-button">Edit Recipe</button>
+                            </div>
                         </section>
-                        <button type="submit" className="submit-button">Edit Recipe</button>
                     </div>
                 </form>
             </div>

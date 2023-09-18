@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { postRecipeThunk } from "../../store/recipes"
+import './RecipeCreate.css'
 
 export default function RecipeCreate() {
     const dispatch = useDispatch()
@@ -42,16 +43,15 @@ export default function RecipeCreate() {
     return (
         <div className="index">
             <div className="recipe-create-div">
-                <h1>Create a Recipe</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>
+                            <h1>Create a Recipe</h1>
                             <label className="create-form-elements">
-                                Category:
                                 <select
                                     value={category}
                                     onChange={(e) => setCategory(e.target.value)}>
-                                    <option value="">--Please choose a category</option>
+                                    <option value="">--Please choose a category (click on me)</option>
                                     <option value="breakfast">Breakfast</option>
                                     <option value="lunch">Lunch</option>
                                     <option value="dinner">Dinner</option>
@@ -60,7 +60,6 @@ export default function RecipeCreate() {
                             </label>
                             {errros.category && <p className="create-validators">{errros.category}</p>}
                             <label className="create-form-elements">
-                                Title:
                                 <input
                                     className="recipe-inputs"
                                     type="text"
@@ -71,7 +70,6 @@ export default function RecipeCreate() {
                             </label>
                             {errros.title && <p className="create-validators">{errros.title}</p>}
                             <label className="create-form-elements">
-                                Recipe Link:
                                 <input
                                     className="recipe-inputs"
                                     type="text"
@@ -82,7 +80,6 @@ export default function RecipeCreate() {
                             </label>
                             {errros.link && <p className="create-validators">{errros.link}</p>}
                             <label className="create-form-elements">
-                                Description:
                                 <input
                                     className="recipe-inputs"
                                     type="text"
@@ -92,8 +89,10 @@ export default function RecipeCreate() {
                                 />
                             </label>
                             {errros.description && <p className="create-validators">{errros.description}</p>}
+                            <div className="submit-button-container">
+                                <button type="submit" className="submit-button">Create Recipe</button>
+                            </div>
                         </section>
-                        <button type="submit" className="submit-button">Create Recipe</button>
                     </div>
                 </form>
             </div>

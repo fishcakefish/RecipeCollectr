@@ -12,11 +12,58 @@
   align-items: center;
   /* padding-top: 8px;
   padding-bottom: 8px; */
-  padding: 30px;
   /* width: 1080px; */
+  height: 75px;
   border-radius: 5px;
   list-style-type: none;
   border-bottom: 1px solid rgb(172, 168, 168);
   margin: auto;
   background-color: #f8f6f0;
+}
+
+.nav-home img {
+  width: 50px;
+  height: auto;
+}
+
+.nav-home {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-home a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.nav-home a:hover {
+  color: rgb(44, 41, 41);
+}
+
+.nav-logout button { /* Def did NOT chatGPT this logout button*/
+  background: linear-gradient(90deg, #ff7a18, #fd3a4a);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 30px;
+}
+
+.nav-logout button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logout button:active {
+  transform: translateY(0);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logout button:focus {
+  outline: none;
 }

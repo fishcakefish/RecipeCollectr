@@ -15,7 +15,7 @@ class Recipe(db.Model, UserMixin):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     user = db.relationship("User", back_populates="recipes")
-    notes = db.relationship("Note", back_populates="recipe")
+    notes = db.relationship("Note", back_populates="recipe", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -26,4 +26,3 @@ class Recipe(db.Model, UserMixin):
             "description": self.description,
             "user": self.user.to_dict()
         }
-        

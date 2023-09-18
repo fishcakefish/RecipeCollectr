@@ -10,7 +10,7 @@ class Note(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     entry = db.Column(db.String(500), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    recipe_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('recipes.id')), nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('recipes.id'), ondelete='CASCADE'), nullable=False)
 
     user = db.relationship("User", back_populates="notes")
     recipe = db.relationship("Recipe", back_populates="notes")

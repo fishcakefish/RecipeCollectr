@@ -1,0 +1,81 @@
+.index .recipe-create-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.index h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#create-form-data {
+    width: 500px;
+    height: auto;
+    background-color: #f8f6f0;
+    box-shadow: -5px 1px 8px rgba(0, 0, 0, 0.1),
+                 5px 1px 8px rgba(0, 0, 0, 0.1),
+                 0 3px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.create-form-elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipe-inputs {
+    width: 450px;
+    height: 25px;
+    border-color: lightgray;
+    margin-bottom: 10px;
+}
+
+#index label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.create-validators {
+    color: red;
+    margin: 5px 0;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    background-color: #df8853;
+    color: white;
+    font-size: 18px;
+    width: 100px;
+    height: 55px;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.submit-button:hover {
+    background-color: darkorange;
+}
+
+.recipe-inputs,
+#create-form-data select {
+    width: 450px;
+    height: 35px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    appearance: none;
+    background-color: white;
+}

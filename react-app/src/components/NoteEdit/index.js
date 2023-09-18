@@ -34,13 +34,12 @@ export default function NoteEdit({ note, noteId }) {
     return (
         <div className="index">
             <div className="recipe-create-div">
-                <h1>Edit Note</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>
-                            <label className="create-form-elements">
-                                Entry:
-                                <input
+                            <h1>Edit Note</h1>
+                            <label className="create-note-elements">
+                                <textarea
                                     className="entry-inputs"
                                     type="text"
                                     placeholder="Entry"
@@ -49,8 +48,10 @@ export default function NoteEdit({ note, noteId }) {
                                 />
                             </label>
                             {errros.entry && <p className="create-validators">{errros.entry}</p>}
+                            <div className="submit-button-container">
+                                <button type="submit" className="submit-button">Edit Note</button>
+                            </div>
                         </section>
-                        <button type="submit" className="submit-button">Edit Recipe</button>
                     </div>
                 </form>
             </div>

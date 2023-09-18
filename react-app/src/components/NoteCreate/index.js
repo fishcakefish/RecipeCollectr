@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { postNoteThunk } from "../../store/notes"
 import { useModal } from "../../context/Modal"
+import './NoteCreate.css'
 
 export default function NoteCreate({ recipeId }) {
     const dispatch = useDispatch()
@@ -32,13 +33,12 @@ export default function NoteCreate({ recipeId }) {
     return (
         <div className="index">
             <div className="recipe-create-div">
-                <h1>Create Note</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>
-                            <label className="create-form-elements">
-                                Note:
-                                <input
+                            <h1>Create Note</h1>
+                            <label className="create-note-elements">
+                                <textarea
                                     className="entry-inputs"
                                     type="text"
                                     placeholder="Note"
@@ -47,8 +47,10 @@ export default function NoteCreate({ recipeId }) {
                                 />
                             </label>
                             {errros.entry && <p className="create-validators">{errros.entry}</p>}
+                            <div className="submit-button-container">
+                                <button type="submit" className="submit-button">Create Note</button>
+                            </div>
                         </section>
-                        <button type="submit" className="submit-button">Create Note</button>
                     </div>
                 </form>
             </div>

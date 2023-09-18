@@ -6,21 +6,27 @@ export default function OtherRecipes() {
     const dispatch = useDispatch()
     const recipe = useSelector(state => state.recipes.singleRecipe)
     const [toggle, setToggle] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     const handleClick = async (e) => {
         e.preventDefault()
+        setLoading(true)
         setToggle(toggle + 1)
     }
 
     useEffect(() => {
-        dispatch(getRandomRecipeThunk())
+        dispatch(getRandomRecipeThunk()).then(() => {
+            setLoading(false)
+        })
     }, [dispatch, toggle])
 
     console.log(recipe)
 
+    if (loading) return <h1>{">.<"}</h1>
+
     return (
         <div className="other-recipes-container">
-            <button onClick={handleClick}>REFRESH</button>
+            <button className="refresh-button" onClick={handleClick}>Refresh</button>
             <div className="otherrecipe-container">
                 <h2>{recipe.title}</h2>
                 <h3>{recipe.description}</h3>

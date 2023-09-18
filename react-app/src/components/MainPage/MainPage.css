@@ -17,9 +17,24 @@
     justify-content: center;
 }
 
-.other-recipes-container button {
+/* .other-recipes-container button {
     width: 80px;
     height: auto;
+} */
+
+.refresh-button {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80px;
+    height: 25px;
+}
+
+.refresh-button:hover {
+    background-color: #e5e5e5;
 }
 
 .your-recipes-container {

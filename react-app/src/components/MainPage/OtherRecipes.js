@@ -19,13 +19,13 @@ export default function OtherRecipes() {
     console.log(recipe)
 
     return (
-        <>
-            <h3>hello from other recipes</h3>
+        <div className="other-recipes-container">
+            <button onClick={handleClick}>REFRESH</button>
             <div className="otherrecipe-container">
-                <h2>Other recipe container</h2>
-                <h3>{recipe.title}</h3>
-                <button onClick={handleClick}>REFRESH</button>
+                <h2>{recipe.title}</h2>
+                <h3>{recipe.description}</h3>
+                <h4>Link: <a href={recipe.recipe_link} target="_blank" rel="noopener noreferrer">{recipe.recipe_link}</a></h4>
             </div>
-        </>
+        </div>
     )
 }

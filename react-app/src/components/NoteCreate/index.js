@@ -10,6 +10,10 @@ export default function NoteCreate({ recipeId }) {
     const [errros, setErrors] = useState({})
     const { closeModal } = useModal()
 
+    function hardRefresh() {
+        window.location.reload();
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         let validationErrors = {}
@@ -24,6 +28,7 @@ export default function NoteCreate({ recipeId }) {
 
         try {
             await dispatch(postNoteThunk(formData, recipeId))
+            hardRefresh()
             closeModal()
         } catch (error) {
             console.error('Error creating note:', error)

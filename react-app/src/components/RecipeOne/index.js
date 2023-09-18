@@ -33,24 +33,26 @@ export default function RecipeOne() {
 
     return (
         <>
-            <h1>Hello from RecipeOne component</h1>
-            <h2>{recipe.title}</h2>
+            <h1>{recipe.title}</h1>
+            <h3>{recipe.description}</h3>
+            <h4>Link: <a href={recipe.recipe_link} target="_blank" rel="noopener noreferrer">{recipe.recipe_link}</a></h4>
+            {/* <h2>Your Notes: (bug: refresh if editing or adding notes)</h2> */}
+            <h2>Your Notes: </h2>
             <OpenModalButton
                 buttonText={"Add Note"}
                 modalComponent={<NoteCreate recipeId={recipe.id}/>}
             />
-            <h2>Your Notes: (bug: refresh if editing or adding notes)</h2>
             {notes.map(note => (
                 <div key={note.id}>
                     <h3>{note.entry}</h3>
                     <div>
                         <OpenModalButton
-                            buttonText={"Edit"}
-                            modalComponent={<NoteEdit note={note} noteId={note.id} recipeId={recipeId}/>}
+                                buttonText={"Edit"}
+                                modalComponent={<NoteEdit note={note} noteId={note.id} recipeId={recipeId}/>}
                         />
                         <OpenModalButton
-                            buttonText={"Delete"}
-                            modalComponent={<NoteDelete noteId={note.id}/>}
+                                buttonText={"Delete"}
+                                modalComponent={<NoteDelete noteId={note.id} />}
                         />
                     </div>
                 </div>

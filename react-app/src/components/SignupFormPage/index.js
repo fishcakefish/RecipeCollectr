@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { signUp } from "../../store/session";
@@ -12,20 +12,41 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  if (sessionUser) return <Redirect to="/" />;
+  const [errorObject, setErrorObject] = useState({})
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
-        if (data) {
-          setErrors(data)
-        }
-    } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+
+    const currentErrors = validateInputs();
+    if (Object.keys(currentErrors).length > 0) {
+      setErrorObject(currentErrors);
+      return;
     }
-  };
+
+    if (password === confirmPassword) {
+      const data = await dispatch(signUp(username, email, password));
+      if (data) {
+        setErrors(data);
+      }
+    } else {
+      setErrors(['Confirm Password field must be the same as the Password field']);
+    }
+  }
+
+  const validateInputs = () => {
+    const errorObj = {};
+    if (username.length >= 40) errorObj["username"] = "Username must be 40 characters or less";
+    if (!username.length) errorObj["username"] = "Username cannot be blank";
+    if (username.includes('@')) errorObj["username"] = "Username cannot be an email";
+    if (email.length >= 255) errorObj["email"] = "Email must be must be 255 characters or less";
+    if (!email.length) errorObj["email"] = "Email cannot be blank";
+    if (!email.includes('@') || !email.includes('.')) errorObj["email"] = "Invalid email";
+    if (password !== confirmPassword) errorObj['password'] = 'Passwords must match';
+    if (password.length < 8) errorObj['password'] = "Password must be at least 8 characters long";
+    return errorObj;
+  }
+
+  if (sessionUser) return <Redirect to="/" />;
 
   return (
     <>
@@ -46,6 +67,7 @@ function SignupFormPage() {
               />
               Email Address
             </label>
+            {errorObject.email && <p className='errors'>{errorObject.email}</p>}
             <label>
               <input
                 type="text"
@@ -55,6 +77,7 @@ function SignupFormPage() {
               />
               Username
             </label>
+            {errorObject.username && <p className='errors'>{errorObject.username}</p>}
             <label>
               <input
                 type="password"
@@ -64,6 +87,7 @@ function SignupFormPage() {
               />
               Password
             </label>
+            {errorObject.password && <p className='errors'>{errorObject.password}</p>}
             <label>
               <input
                 type="password"

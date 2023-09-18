@@ -18,12 +18,13 @@ export default function MainPage() {
 
     return (
         <>
+            <div className="main-page-title">{yourRecipes ? <h1>My Recipes</h1> : <h1>Random Recipe</h1>}</div>
             <div className="main-page-container">
-                <div>Hello! from MainPage</div>
                 <div>{ yourRecipes ? <MyRecipes /> : <OtherRecipes /> }</div>
                 <div className="your-recipes-container">
                     <button onClick={handleMyClick}>My Recipes</button>
-                    <button onClick={handleOtherClick}>Other Recipes</button>
+                    {/* <button onClick={handleOtherClick}>Other Recipes</button> */}
+                    <button onClick={handleOtherClick}>Random Recipe</button>
                 </div>
             </div>
         </>

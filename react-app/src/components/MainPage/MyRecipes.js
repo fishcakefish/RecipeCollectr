@@ -16,16 +16,14 @@ export default function MyRecipes() {
 
     return (
         <>
-            <h3>hello from my recipes</h3>
             <h2><NavLink exact to="/create">Create New Recipe!</NavLink></h2>
             <div className="category-container">
                 {categories.map(category => (
-                    <NavLink key={category} exact to={`/myrecipes/${category}`}>
+                    <NavLink key={category} exact to={`/myrecipes/${category}`} className="category-link">
                         {category.charAt(0).toUpperCase() + category.slice(1)}
                     </NavLink>
                 ))}
             </div>
-            <h2>space</h2>
         </>
     )
 }

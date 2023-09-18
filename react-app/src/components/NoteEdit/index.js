@@ -11,6 +11,10 @@ export default function NoteEdit({ note, noteId }) {
     const [errros, setErrors] = useState({})
     const { closeModal } = useModal()
 
+    function hardRefresh() {
+        window.location.reload();
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         let validationErrors = {}
@@ -25,6 +29,7 @@ export default function NoteEdit({ note, noteId }) {
 
         try {
             await dispatch(editNoteThunk(formData, noteId))
+            hardRefresh()
             closeModal()
         } catch (error) {
             console.error('Error editing note:', error)

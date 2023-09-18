@@ -46,7 +46,7 @@ export default function RecipeCreate() {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <section id='create-form-data'>
-                            <h1>Create a Recipe</h1>
+                            <h1>Add a Recipe</h1>
                             <label className="create-form-elements">
                                 <select
                                     value={category}
@@ -90,7 +90,7 @@ export default function RecipeCreate() {
                             </label>
                             {errros.description && <p className="create-validators">{errros.description}</p>}
                             <div className="submit-button-container">
-                                <button type="submit" className="submit-button">Create Recipe</button>
+                                <button type="submit" className="submit-button">Add Recipe</button>
                             </div>
                         </section>
                     </div>

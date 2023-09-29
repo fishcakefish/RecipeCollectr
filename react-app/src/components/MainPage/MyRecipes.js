@@ -16,7 +16,7 @@ export default function MyRecipes() {
 
     return (
         <>
-            <h2><NavLink exact to="/create">Create New Recipe!</NavLink></h2>
+            <h2><NavLink exact to="/create">Add New Recipe!</NavLink></h2>
             <div className="category-container">
                 {categories.map(category => (
                     <NavLink key={category} exact to={`/myrecipes/${category}`} className="category-link">

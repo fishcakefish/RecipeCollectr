@@ -1,0 +1,54 @@
+.recipe-category-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding-top: 20px;
+}
+
+.recipe-category-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100px;
+    width: 33.33%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.recipe-category-box .recipe-category-image-placeholder {
+    flex-basis: 33.33%;
+    height: 100%;
+    background-color: grey;
+    display: inline-block;
+}
+
+.recipe-category-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+}
+
+/* Remove underline from NavLink */
+.recipe-category-content a {
+    text-decoration: none;
+}
+
+/* Change the text color to black (or any other color you prefer) */
+.recipe-category-content a,
+.recipe-category-content a:visited {
+    color: black;
+}
+
+/* Change hover state if needed */
+.recipe-category-content a:hover {
+    color: grey; /* or any other hover color */
+}

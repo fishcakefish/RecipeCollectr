@@ -6,6 +6,7 @@ import RecipeDelete from "../RecipeDelete"
 import OpenModalButton from "../OpenModalButton"
 import RecipeEdit from "../RecipeEdit"
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
+import './RecipeCategory.css'
 
 export default function RecipeCategory() {
     const dispatch = useDispatch()
@@ -32,23 +33,49 @@ export default function RecipeCategory() {
         )
     }
 
+    // return (
+    //     <div classname='category-container'>
+    //         <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+    //         {categoryRecipes.map(recipe => (
+    //             <>
+    //                 <NavLink exact to={`/${recipe.id}`}><h3 key={recipe.id || recipe.title}>{recipe.title}</h3></NavLink>
+    //                 <div>
+    //                     <OpenModalButton
+    //                         buttonText={"Edit"}
+    //                         modalComponent={<RecipeEdit recipeId={recipe.id}/>}
+    //                     />
+    //                     <OpenModalButton
+    //                         buttonText={"Delete"}
+    //                         modalComponent={<RecipeDelete recipeId={recipe.id}/>}
+    //                     />
+    //                 </div>
+    //             </>
+    //         ))}
+    //     </div>
+    // )
     return (
-        <div>
+        <div className="recipe-category-container">
             <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
             {categoryRecipes.map(recipe => (
-                <>
-                    <NavLink exact to={`/${recipe.id}`}><h3 key={recipe.id || recipe.title}>{recipe.title}</h3></NavLink>
-                    <div>
-                        <OpenModalButton
-                            buttonText={"Edit"}
-                            modalComponent={<RecipeEdit recipeId={recipe.id}/>}
-                        />
-                        <OpenModalButton
-                            buttonText={"Delete"}
-                            modalComponent={<RecipeDelete recipeId={recipe.id}/>}
-                        />
+                
+                <div key={recipe.id || recipe.title} className="recipe-category-box">
+                    <div className="recipe-category-image-placeholder"></div>
+                    <div className="recipe-category-content">
+                        <NavLink exact to={`/${recipe.id}`}>
+                            <h3>{recipe.title}</h3>
+                        </NavLink>
+                        <div classname="recipe-category-button-container">
+                            <OpenModalButton
+                                buttonText={"Edit"}
+                                modalComponent={<RecipeEdit recipeId={recipe.id}/>}
+                            />
+                            <OpenModalButton
+                                buttonText={"Delete"}
+                                modalComponent={<RecipeDelete recipeId={recipe.id}/>}
+                            />
+                        </div>
                     </div>
-                </>
+                </div>
             ))}
         </div>
     )

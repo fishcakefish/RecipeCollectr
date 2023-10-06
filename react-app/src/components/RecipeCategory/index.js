@@ -7,6 +7,7 @@ import OpenModalButton from "../OpenModalButton"
 import RecipeEdit from "../RecipeEdit"
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
 import './RecipeCategory.css'
+import RecipeCategorySearch from "../RecipeCategorySearch"
 
 export default function RecipeCategory() {
     const dispatch = useDispatch()
@@ -14,6 +15,9 @@ export default function RecipeCategory() {
     const recipes = useSelector(state => Object.values(state.recipes.allRecipes))
     const categoryRecipes = recipes.filter(recipe => recipe.category === category)
     const [isLoading, setIsLoading] = useState(true)
+    const [recipeFilter, setRecipeFilter] = useState('')
+    const filteredRecipes = categoryRecipes.filter(recipe => recipe.title.toLowerCase().includes(recipeFilter.toLowerCase()))
+    console.log(recipes)
 
     useEffect(() => {
         dispatch(getUserRecipesThunk()).finally(() => {
@@ -33,31 +37,12 @@ export default function RecipeCategory() {
         )
     }
 
-    // return (
-    //     <div classname='category-container'>
-    //         <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
-    //         {categoryRecipes.map(recipe => (
-    //             <>
-    //                 <NavLink exact to={`/${recipe.id}`}><h3 key={recipe.id || recipe.title}>{recipe.title}</h3></NavLink>
-    //                 <div>
-    //                     <OpenModalButton
-    //                         buttonText={"Edit"}
-    //                         modalComponent={<RecipeEdit recipeId={recipe.id}/>}
-    //                     />
-    //                     <OpenModalButton
-    //                         buttonText={"Delete"}
-    //                         modalComponent={<RecipeDelete recipeId={recipe.id}/>}
-    //                     />
-    //                 </div>
-    //             </>
-    //         ))}
-    //     </div>
-    // )
     return (
         <div className="recipe-category-container">
             <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
-            {categoryRecipes.map(recipe => (
-                
+            <RecipeCategorySearch category={category} setRecipeFilter={setRecipeFilter}/>
+            {filteredRecipes.map(recipe => (
+
                 <div key={recipe.id || recipe.title} className="recipe-category-box">
                     <div className="recipe-category-image-placeholder"></div>
                     <div className="recipe-category-content">
